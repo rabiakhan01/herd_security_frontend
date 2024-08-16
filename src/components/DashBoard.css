@@ -1,0 +1,1186 @@
+body {
+    background-color: #F2F4F7;
+}
+
+#dashboard {
+    width: 280px;
+    background-color: #016b38;
+    color: white;
+    text-align: center;
+    position: fixed;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+
+}
+
+
+p {
+    font-size: 14px;
+}
+
+#profimg {
+    width: 40px;
+    height: 40px;
+    margin: 12px;
+}
+
+.center {
+    margin: 0 auto;
+    display: flex;
+    border-top: 1px solid white;
+    align-items: space-between;
+    width: 248px;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+
+.options.active {
+    background-color: white;
+    color: #016b38;
+}
+
+.options {
+    color: white; /* or any color you want */
+    background-color: #016b38;
+    border: none;
+    font-size: 18px;
+    width: 230px;
+    text-align: left;
+    border-radius: 5px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.options svg {
+    position: relative;
+    top: 5px;
+    stroke: currentColor; /* This ensures the SVG strokes inherit the color of .options */
+}
+
+
+.options path {
+    stroke: currentColor; /* Ensure paths inside SVGs use currentColor */
+    transition: stroke 0.3s ease; /* Ensure smooth stroke transition */
+}
+
+.options.active img path {
+    stroke: #016b38; /* Ensure active SVG stroke color is inherited */
+}
+
+.pdash {
+    font-size: 17px;
+    display: inline;
+    margin-left: 10px;
+}
+
+
+#logoutbtn {
+    background-color: #016b38;
+    border: none;
+    font-size: 18px;
+    float: right;
+    height: 18px;
+    margin-top: 12px;
+    padding-left: 12px;
+}
+
+#userinfo {
+    text-align: left;
+}
+
+#content {
+    margin-left: 280px; /* Offset the content area by the width of the dashboard */
+    padding: 20px;
+    width: calc(100% - 320px); /* Fill the remaining space */
+    height: 100%; /* Ensure it takes up the full height */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    background-color: #F2F4F7; /* Optional: match the background color */
+}
+
+h1 {
+    margin: 0 0 10px 0;
+    padding-left: 16px;
+    font-size: 28px;
+}
+
+.editp {
+    margin-bottom: 0;
+}
+
+.editemail {
+    margin-top: 0;
+}
+
+#topboxes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.topcontent,
+.btmcontent {
+    width: 317px;
+    background: white;
+    border-radius: 10px;
+    margin: 12px;
+}
+
+.topcontent {
+    height: 102px;
+    padding: 16px;
+}
+
+.btmcontent {
+    height: 144px;
+    padding: 16px;
+}
+
+.title {
+    display: flex;
+}
+
+.title img {
+    border: 1px solid #EAECF0;
+    border-radius: 5px;
+    padding: 7px;
+}
+
+.title h4 {
+    margin: 0 10px;
+    align-self: center;
+}
+
+h3 {
+    margin-left: 16px;
+    font-size: 16px;
+}
+
+.findingTable, .ueTable, .sentTable{
+    border: 1px solid #EAECF0;
+    width: 97%;
+    margin: 16px;
+    border-radius: 10px;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+.sentTable tr:hover {
+    background-color: #FCFCFD;
+}
+
+th {
+    padding-left: 10px;
+    font-size: 12px;
+    text-align: left;
+    font-weight: normal;
+    color: #475467;
+    background-color: #FCFCFD;
+}
+
+.findingTable td {
+    width: calc((100% - 30%) / 5); 
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    font-size: 14px;
+}
+
+.findingTable td:last-child {
+    width: 10%; 
+}
+
+.ueTable td {
+    width: calc((100% - 20%) / 3); 
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    font-size: 14px;
+}
+
+
+#findings {
+    position: relative;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px; /* Completely hidden by default */
+    width: 360px;
+    height: 100%;
+    background-color: #FCFCFD;
+    border-left: 1px solid #EAECF0;
+    transform: translateX(100%); /* Initially hide the sidebar off-screen */
+    transition: transform 0.4s ease, width 0.4s ease, margin-left 0.4s ease; /* Transitions for sliding and expanding effect */
+    padding: 20px;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.sidebarContainer {
+    background-color: white;
+    border: 1px solid #EAECF0;
+    border-radius: 5px;
+    height: 210px;
+    margin: 10px 5px;
+}
+
+#comment {
+    border-radius: 5px;
+    border: 1px solid #EAECF0;
+    padding: 7px;
+    margin-left: 5px;
+    width: 93%;
+}
+.sidebarContainer p {
+    margin: 5px;
+}
+
+
+.editbackground {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.sidebarinfo {
+    width: 50%;
+    margin: 10px 0;
+}
+
+.sidebarinfo p {
+    margin: 3px 0;
+}
+
+.sidebardetails p {
+    color: #475467;
+    font-size: 12px;
+}
+
+
+.sidebar.active {
+    right: 0; /* Fully visible when active */
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+
+
+/* Adjust the width of the last column for ueTable */
+.ueTable td:last-child {
+    width: 15%; /* Adjust this value as needed */
+}
+
+td {
+    padding-left: 10px;
+}
+
+tr {
+    border-bottom: 1px solid #EAECF0;
+    background-color: white;
+}
+
+.findingTable tr:hover {
+    background-color: #FCFCFD;
+}
+
+.ueTable tr:hover {
+    background-color: #FCFCFD;
+}
+
+#tablelabel {
+    height: 44px;
+}
+
+.progress-wrapper {
+    display: inline-block;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #e0e0e0;
+    margin-top: 5px;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 90%;
+}
+
+.scoreBar {
+    display: flex;
+}
+
+.green {
+    background-color: green;
+}
+
+.colorgreen {
+    color: green;
+}
+.colorgrey {
+    color: #344054;
+}
+
+.red {
+    background-color: #D92D20;
+}
+
+.defaultColor {
+    background-color: orange; /* Or any default color you prefer */
+}
+
+#logo {
+    height: 35px;
+    padding-top: 10%;
+    padding-right: 88px;
+    margin-bottom: 10px;
+}
+
+.scoreBar p {
+    margin: 2px 15px;
+}
+
+.search {
+    margin: 20px 16px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 25%;
+    
+}
+
+.search-bar input {
+    border: none;
+    padding: 10px;
+    flex: 1;
+}
+
+.search-bar input:focus {
+    outline: none;
+}
+
+.search-bar .search-icon {
+    padding: 10px;
+    color: #667085;
+    background-color: white;
+}
+
+.search button {
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 140px;
+    float: right;
+    display: flex;
+    justify-content: space-between;
+    padding: 7px;
+    margin: 0 5px;
+}
+
+button p {
+    margin: 0;
+    align-self: center;
+    padding: 1px 5px;
+}
+
+button img {
+    align-self: center;
+    padding: 1px 5px;
+}
+
+#invitebtn {
+    background-color: #016b38;
+    color: white;
+    width: 130px;
+    font-weight: 600;
+    padding: 7px 8px;
+}
+#surveybtn {
+    background-color: #016b38;
+    color: white;
+    width: 150px;
+    font-weight: 600;
+    padding: 5px 8px;
+    cursor: pointer;
+}
+
+
+.editbtn {
+    background-color: white;
+    border: none;
+    color: #016b38;
+    font-weight: bolder;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.sendbtn {
+    border: 1px solid #D0D5DD;
+    background-color: white;
+    border-radius: 5px;
+    padding:8px;
+    font-weight: 600;
+
+}
+
+.inteContainer {
+    width: 480px;
+    background-color: white;
+    border-radius: 7px;
+    border: 1px solid #EAECF0;
+    display: flex;
+    height: 90px;
+    padding: 20px;
+    margin: 16px;
+    justify-content: space-between;
+}
+.install {
+    font-weight: 600;
+}
+
+.inteContainer img{
+    width: 60px;
+}
+
+h5 {
+    margin: 0;
+    color: #344054;
+}
+
+.stack {
+    align-self: center;
+    padding-left: 15px;
+}
+
+.inteContainer p {
+    margin: 0;
+    color: #475467;
+}
+
+.leftcontent {
+    display: flex;
+}
+
+
+.inteContainer button {
+    height: 35px;
+    background-color: #016b38;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    align-self: center;
+}
+
+.flexcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#inteContent h3{
+    margin: 25px 0 5px 18px;
+}
+
+
+/* email anazlyer css */
+.emailContainer {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 20px 0 10px 16px;
+}
+
+.emailContainer h4 {
+    margin: 0;
+    align-self: end;
+    color: #101828;
+    padding-right: 5px;
+    font-size: 14px;
+}
+.emailContainer h5 {
+    color: #344054;
+    padding-right: 5px;
+    font-size: 13px;
+}
+
+#recentEmails p{
+    font-size: 12px;
+}
+.makeRow p {
+    margin: 0;
+    align-self: end;
+    color: #344054;
+}
+
+.makeRow {
+    display: flex;
+    margin-top: 10px;
+}
+
+
+#securitybtn {
+    background-color: #016b38;
+    color: white;
+    float: right;
+    width: 160px;
+    padding: 8px;
+    font-weight: 600;
+}
+
+a {
+    font-size: 12px;
+}
+
+.bottom {
+    margin: 5px 0;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    width: 40%;
+    height: 75%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; 
+}
+
+/*user engagement popup */
+.user-popup-content {
+    background-color: white;
+    padding: 25px 30px 25px 25px;
+    border-radius: 10px;
+    position: relative;
+    width: 25%;
+    height: 50%;
+}
+
+
+
+.popup select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #D0D5DD;
+    color: #667085;
+    width: 101%;
+    margin: 5px 0;
+}
+
+#popupinvite {
+    border-radius: 5px;
+    border: none;
+    padding: 12px;
+    margin: 15px 0;
+    background-color: #016b38;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/*email analyzer pop up form */
+.popup-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 5rem;
+}
+.input-field {
+    padding: 9px;
+    border: 1px solid #D0D5DD;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.popup-input > label {
+    padding-bottom: 5px;
+    font-size: 16px;
+}
+.popup-input > span {
+    color:#D92D20;
+    font-size: 14px;
+}
+.input-field:focus{
+    outline: none;
+}
+#email {
+    margin-bottom: 10px;
+}
+
+.popup h3 {
+    margin-left: 0;
+}
+label {
+    color: #344054;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* user engagement sidebar */
+#sideBarProf {
+    height: 75px;
+}
+
+#namePosi {
+    margin-left: 10px;
+}
+
+#namePosi h3 {
+    margin: 0;
+    color: #344054;
+}
+
+#namePosi h4 {
+    margin: 3px 0;
+    color: #475467;
+    font-weight: normal;
+}
+
+#engagementScore {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Ensure items are centered vertically */
+    background: white;
+    border: 1px solid #EAECF0;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+#score {
+    display: flex;
+    align-items: center; /* Ensure items are centered vertically */
+}
+
+#engagementScore p {
+    font-size: 14px;
+    font-weight: bold;
+    color: #101828;
+    margin: 0 15px;
+}
+
+#engagementScore h4 {
+    margin: 0;
+}
+
+.biggerFont {
+    font-size: 18px;
+}
+
+#level {
+    background-color: #F79009;
+    color: white; 
+    padding: 10px 10px; /* Add some padding */
+    border-radius: 0 5px 5px 0; /* Rounded corners on the right side */
+    display: flex;
+    align-items: center; /* Center the text vertically */
+}
+
+.sidebardetails table {
+    border-collapse: separate; /* Use separate to allow rounded corners */
+    border-spacing: 0; /* Remove any spacing between cells */
+    width: 100%; /* Ensure the table takes the full width of the container */
+    border: 1px solid #EAECF0; /* Add border to the table */
+    border-radius: 10px; /* Apply rounded corners to the table */
+    overflow: hidden; /* Ensure that the border-radius is applied to the entire table */
+}
+
+.sidebardetails th,
+.sidebardetails td {
+    padding: 15px;
+    text-align: left; 
+    border-bottom: 1px solid #EAECF0; 
+}
+
+.sidebardetails th:first-child,
+.sidebardetails td:first-child {
+    border-left: 0; 
+}
+
+.sidebardetails th:last-child,
+.sidebardetails td:last-child {
+    border-right: 0; 
+}
+
+.sidebardetails th {
+    border-top: 0; 
+}
+
+.sidebardetails tr:first-child th {
+    border-top: none; 
+}
+
+.sidebardetails tr:last-child td {
+    border-bottom: none; 
+}
+
+#draftOrSentButtons {
+    margin: 20px 0 0 16px;
+}
+
+#draftOrSentButtons button {
+
+    padding: 10px 20px;
+    color: #667085;
+    background-color: #F2F4F7;
+    border: none;
+    border-bottom: 1px solid #EAECF0;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 3px;
+}
+
+#draftOrSentButtons button:hover {
+    color: #016b38;
+    border-bottom: 2px solid #016b38;
+}
+
+#draftOrSentButtons button.active {
+    color: #016b38;
+    border-bottom: 2px solid #016b38;
+}
+
+.sentTable td {
+    width: calc((100% - 30%) / 5); 
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    font-size: 14px;
+}
+
+.findingTable td:fourth-child {
+    width: 5%; 
+}
+
+.surveycontainer, .surveycontainerbtm {
+    display: flex;
+    flex-wrap: wrap;
+}
+.splitcontainer {
+    width: 45.5%;
+    margin: 10px 10px 0 10px;
+}
+
+.surveycontainerbtm input{
+    width: 42.5%;
+    margin: 10px;
+}
+.surveyborder {
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+    margin:  10px 10px 10px;
+    padding-top: 10px;
+}
+#surveyquestion {
+    width: 9%;
+    margin: 10px 10px 0 10px;
+}
+
+#nextbtn {
+    background-color: #016b38;
+    color: white;
+    padding: 8px 60px;
+    border-radius: 5px;
+    border: none;
+    float: right;
+    margin: 3px 11px;
+    margin-bottom: 20px; /* Adjust the value as needed */
+    font-weight: bold;
+}
+
+.progressbarcontainer {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.start {
+    background-color: #016b38; 
+}
+
+.end {
+    background-color: none;
+    border: 2px solid #E0E0E0; /* Outer border */
+}
+
+.inner-circle {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #FFFFFF; /* White color for inner circle */
+}
+
+.inner-circle-end {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #E0E0E0;
+}
+
+.line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #D0D5DD; 
+}
+
+.alignbar {
+    display: flex;
+    justify-content: space-between;
+    width: 72%;
+    margin-left: 10%;
+}
+
+.completed {
+    background-color: #016b38 !important; 
+    border: none;
+}
+
+.inner-circle-completed {
+    background-color: white !important; 
+}
+.checkmark {
+    color: white;
+    font-size: .8em;
+}
+
+#popupusers input {
+    width: 20px;
+    margin-right: 10px;
+}
+
+#popupusers {
+    border-radius: 10px;
+    border: 1px solid #EAECF0;
+    border-bottom: none;
+    overflow: hidden;
+}
+
+.users {
+    background-color: #FCFCFD;
+    border-bottom: 1px solid #EAECF0;
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+}
+.users label {
+    font-size: 0.75em;
+}
+
+.bottomborder {
+    padding: 15px 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #EAECF0;
+}
+
+/* survey sent side bar */
+.sentrow {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sentrow h5 {
+    margin-top: 12px;
+}
+
+.sentrow p {
+    font-size: 12px;
+}
+
+.addspace {
+    margin-top: 10px;
+}
+
+
+/*side bar expand*/
+.sidebar.expanded {
+    right: 0; /* Slide into view */
+    width: calc(100% - 320px); /* Expand to full width */
+    margin-left: 300px;
+}
+
+
+.expand-btn {
+    position: absolute;
+    top: 10px;
+    right: 50px; 
+    border: none;
+    background-color: #FCFCFD;
+}
+
+/*when expanded */
+
+.sidebar.expanded .sidebarinfo {
+    width: 25%;
+}
+
+.sidebar.active {
+    transform: translateX(0); /* Slide the sidebar in */
+}
+
+.sidebar.expanded #flexExpanded {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar.expanded #score {
+    padding: 0 20px;
+    flex-direction: column;
+    border-right: 1px solid #EAECF0;
+}
+
+.sidebar.expanded #score p {
+    padding-bottom: 5px;
+}
+
+.sidebar.expanded #rate p {
+    padding-bottom: 5px;
+}
+.sidebar.expanded #rate {
+    padding: 0 20px;
+}
+
+.sidebar.expanded #level {
+    padding: 30px 30px;
+}
+
+#addQuestionBtn {
+    color: #016b38;
+    border: none;
+    font-weight: bold;
+    background-color: #FFFFFF;
+}
+
+.remove-btn {
+    position: relative;
+    left: 96%;
+    top: 20px;
+    border-radius: 50%;
+    border: 1px solid red;
+    background-color: #FFFFFF;
+    color: red;
+}
+
+.questionContainer input{
+    width: 93%;
+    margin: 0 auto;
+}
+
+/* analyzer header styling*/
+#analyzebtn {
+    background-color: #016b38;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 6rem;
+    height: 2.4rem;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    align-self: flex-end;
+    cursor: pointer;
+}
+.analyzer{
+    width: 99%;
+}
+.analyzer-header{
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+}
+.analyzer-header > button {
+     background-color: #016b38;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 7.5rem;
+    height: 2.8rem;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.popup-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px;
+    margin: 0px;
+    font-size: 20px;
+    font-weight: 700;
+    padding-bottom: 16px;
+}
+.popup-heading > button {
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: transparent;
+    cursor: pointer;
+
+}
+.popup-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+}
+
+/*information list in popup*/
+.detail{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.detail-button { 
+    display: flex;
+    justify-content: end;
+}
+.detail-button > button {
+     background-color: #016b38;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 6rem;
+    height: 2.4rem;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    align-self: flex-end;
+    cursor: pointer;
+}
+.detail-button > button:disabled{
+    background-color: #dfe3ec;
+    cursor: not-allowed;
+}
+.detail >  span {
+    font-size: 20px;
+    font-weight: 700;
+    padding-bottom: 14px;
+}
+.detail-content{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: auto;
+    margin-bottom: 12px;
+    row-gap: 14px;
+}
+.detail-item{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.email {
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+}
+.email-heading {
+font-weight: 700;
+}
+.detail-item > input {
+    height: 15px;
+    width: 15px;
+    accent-color: #016b38;
+    margin-top: 4px;
+}
+
+/*as a */
+.detail-question {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.loading{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+.main-loading{
+      width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color:#016b38;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
