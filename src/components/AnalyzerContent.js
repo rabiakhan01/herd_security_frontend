@@ -262,7 +262,7 @@ const PopupForm = ({ closePopup, setShowPopup, setEmailAnalysis, emailAnalysis, 
                                             emailDetails?.map((item, index) => {
                                                 return (
                                                     <div key={index} className='detail-item'>
-                                                        <input type='checkbox' name={item.email} checked={item.checked} onChange={() => { handelAnalysisOnChange(index) }} />
+                                                        <input type='checkbox' style={{ cursor: 'pointer' }} name={item.email} checked={item.checked} onChange={() => { handelAnalysisOnChange(index) }} />
                                                         <div className='email'>
                                                             <div>
                                                                 <span className='email-heading'>Email from: </span>
