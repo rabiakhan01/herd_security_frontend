@@ -203,11 +203,7 @@ const PopupForm = ({ closePopup, setShowPopup, setEmailAnalysis, emailAnalysis, 
                         <button onClick={closePopup}>X</button>
                     </div>
                     <form className='popup-form'>
-                        {
-                            isError && <span style={{ color: '#D92D20' }}>
-                                Email or Password is not valid
-                            </span>
-                        }
+
                         <div className='popup-input'>
                             <label htmlFor="email">Email</label>
                             <input type="email"
@@ -240,7 +236,17 @@ const PopupForm = ({ closePopup, setShowPopup, setEmailAnalysis, emailAnalysis, 
                             />
                             <span>{isEmpty?.password ? 'password is required' : ''}</span>
                         </div>
-                        <button type="button" id="analyzebtn" onClick={handelGetEmails}>Get Emails</button>
+                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                            {
+                                isError ?
+                                    <span style={{ color: '#D92D20' }}>
+                                        Email or Password is not valid
+                                    </span>
+                                    :
+                                    <span></span>
+                            }
+                            <button type="button" id="analyzebtn" onClick={handelGetEmails}>Get Emails</button>
+                        </div>
                     </form>
                 </div>
                 <div style={{
@@ -348,7 +354,7 @@ const AnalyzerContent = () => {
 
     return (
         <div className='analyzer'>
-            <div className='analyzer-header'>
+            <div className='analyzer-header' style={{ flexWrap: 'wrap' }}>
                 <h1>Email Security Analyzer and Assistant</h1>
                 <button onClick={() => handleEmailClick('analyst@email.com')}>Add Analyzer</button>
             </div>

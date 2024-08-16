@@ -513,6 +513,8 @@ h5 {
     border-radius: 5px;
     padding: 10px 20px;
     margin: 20px 0 10px 16px;
+    max-height: 60vh;
+    overflow: auto;
 }
 
 .emailContainer h4 {
@@ -575,12 +577,13 @@ a {
 
 .popup-content {
     background-color: white;
-    padding: 20px;
+    padding: 14px;
     border-radius: 10px;
     position: relative;
     width: 40%;
-    height: 75%;
-    overflow: hidden;
+    height: 90%;
+    min-height: 500px;
+    overflow: auto;
     display: flex;
     flex-direction: column;
     overflow-y: auto; 
@@ -1066,7 +1069,7 @@ label {
     margin: 0px;
     font-size: 20px;
     font-weight: 700;
-    padding-bottom: 16px;
+    padding-bottom: 12px;
 }
 .popup-heading > button {
     border: none;
