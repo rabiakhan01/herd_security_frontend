@@ -3,8 +3,8 @@ import axios from 'axios';
 
 const PopupForm = ({ closePopup, setShowPopup, setEmailAnalysis, emailAnalysis, setAnalysisLoading }) => {
     const endPoint = {
-        getEmail: 'http://44.204.53.210/fetch_emails',
-        analyze: 'http://44.204.53.210/analyze_email'
+        getEmail: 'https://mailapi.testerp.co/fetch_emails',
+        analyze: 'https://mailapi.testerp.co/analyze_email'
     }
     const [emailDetails, setEmailDetails] = useState();
     const [isLoading, setIsLoading] = useState(false)

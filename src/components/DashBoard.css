@@ -582,8 +582,7 @@ a {
     position: relative;
     width: 40%;
     height: 90%;
-    min-height: 500px;
-    overflow: auto;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     overflow-y: auto; 
