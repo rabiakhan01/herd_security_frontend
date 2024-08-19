@@ -10,7 +10,7 @@ const IntegrationsContent = () => (
             <div className="inteContainer">
                 <div className="leftcontent">
                     <img src={gmaillogo} alt="gmail logo"></img>
-                    <div class="stack">
+                    <div className="stack">
                         <h5>Gmail</h5>
                         <p>Monitor Phishing Attacks</p>
                     </div>
@@ -21,36 +21,36 @@ const IntegrationsContent = () => (
             <div className="inteContainer">
                 <div className="leftcontent">
                     <img src={slacklogo} alt="slack logo"></img>
-                    <div class="stack">
+                    <div className="stack">
                         <h5>Slack</h5>
                         <p>Set up User Engagement Surveys</p>
                     </div>
-                    </div>
+                </div>
                 <button className="install">Install Plugin</button>
             </div>
         </div>
         <h3>User Engagement Surveys</h3>
         <div className="inteContainer">
-                <div className="leftcontent">
-                    <img src={slacklogo} alt="slack logo"></img>
-                    <div class="stack">
-                        <h5>Slack</h5>
-                        <p>Set up User Engagement Surveys</p>
-                    </div>
-                    </div>
-                <button className="install">Install Plugin</button>
+            <div className="leftcontent">
+                <img src={slacklogo} alt="slack logo"></img>
+                <div className="stack">
+                    <h5>Slack</h5>
+                    <p>Set up User Engagement Surveys</p>
+                </div>
+            </div>
+            <button className="install">Install Plugin</button>
         </div>
 
         <h3>Threat Feeds</h3>
         <div className="inteContainer">
-                <div className="leftcontent">
-                    <img src={greynoise} alt="greynoise logo"></img>
-                    <div class="stack">
-                        <h5>Greynoise</h5>
-                        <p>Greynoise Intelligence</p>
-                    </div>
-                    </div>
-                <button className="install">Install Plugin</button>
+            <div className="leftcontent">
+                <img src={greynoise} alt="greynoise logo"></img>
+                <div className="stack">
+                    <h5>Greynoise</h5>
+                    <p>Greynoise Intelligence</p>
+                </div>
+            </div>
+            <button className="install">Install Plugin</button>
         </div>
     </div>
 );

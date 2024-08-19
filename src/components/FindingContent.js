@@ -75,7 +75,9 @@ const FindingsContent = () => {
                         senderEmail: 'Sender email',
                         receiverEmail: 'Receiver email',
                         riskScore: 3
-                    })}>
+                    })}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <td>Date & Time</td>
                         <td>Phishing</td>
                         <td>Gmail</td>
@@ -97,7 +99,9 @@ const FindingsContent = () => {
                         senderEmail: 'Sender email',
                         receiverEmail: 'Receiver email',
                         riskScore: 5
-                    })}>
+                    })}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <td>Date & Time</td>
                         <td>Phishing</td>
                         <td>Gmail</td>
@@ -129,7 +133,7 @@ const FindingsContent = () => {
                     <div className='sidebardetails'>
                         <h2>{selectedRowData.alertType}</h2>
                         <p>Risk Score <span className={`editbackground ${getProgressColor(selectedRowData.riskScore / 5)}`}>
-                        {selectedRowData.riskScore}</span></p>
+                            {selectedRowData.riskScore}</span></p>
                         <div className='flexcontainer'>
                             <div className='sidebarinfo'>
                                 <p>Sender email</p>

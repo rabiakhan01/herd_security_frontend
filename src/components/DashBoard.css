@@ -399,6 +399,7 @@ tr {
     justify-content: space-between;
     padding: 7px;
     margin: 0 5px;
+    cursor: pointer;
 }
 
 button p {
@@ -436,6 +437,7 @@ button img {
     font-weight: bolder;
     margin-right: 10px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .sendbtn {
@@ -444,6 +446,7 @@ button img {
     border-radius: 5px;
     padding:8px;
     font-weight: 600;
+    cursor: pointer;
 
 }
 
@@ -494,6 +497,7 @@ h5 {
     border-radius: 5px;
     padding: 10px;
     align-self: center;
+    cursor: pointer;
 }
 
 .flexcontainer {
@@ -835,6 +839,7 @@ label {
     margin: 3px 11px;
     margin-bottom: 20px; /* Adjust the value as needed */
     font-weight: bold;
+    cursor: pointer;
 }
 
 .progressbarcontainer {
@@ -961,6 +966,7 @@ label {
 
 
 .expand-btn {
+    cursor: pointer;
     position: absolute;
     top: 10px;
     right: 50px; 
@@ -1009,9 +1015,11 @@ label {
     border: none;
     font-weight: bold;
     background-color: #FFFFFF;
+    cursor: pointer;
 }
 
 .remove-btn {
+    cursor: pointer;
     position: relative;
     left: 96%;
     top: 20px;
@@ -1093,7 +1101,7 @@ label {
 }
 .detail-button { 
     display: flex;
-    justify-content: end;
+    justify-content: end;;
 }
 .detail-button > button {
      background-color: #016b38;

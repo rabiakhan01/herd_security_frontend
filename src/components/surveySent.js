@@ -35,7 +35,9 @@ const SurveySent = () => {
                         datesent: '05/24/2024',
                         participation: 30,
                         status: 'In Progress'
-                    })}>
+                    })}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <td>Phishing Gmail 1</td>
                         <td>Slack</td>
                         <td>20</td>
@@ -51,7 +53,9 @@ const SurveySent = () => {
                         datesent: '05/23/2024',
                         participation: 50,
                         status: 'Completed'
-                    })}>
+                    })}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <td>Phishing Gmail 2</td>
                         <td>Slack</td>
                         <td>30</td>
@@ -72,12 +76,12 @@ const SurveySent = () => {
                         <h5>Details</h5>
                         <hr></hr>
                         <div className='sentrow'>
-                            <p>Participation:</p> 
+                            <p>Participation:</p>
                             <h5>{selectedRowData.participation}%</h5>
                         </div>
 
                         <div className='sentrow'>
-                            <p>Sent Via:</p> 
+                            <p>Sent Via:</p>
                             <h5>{selectedRowData.senvia}</h5>
                         </div>
                         <div className='sentrow'>
@@ -91,23 +95,23 @@ const SurveySent = () => {
                         </div>
 
                         <table className='addspace'>
-                                <thead>
-                                    <tr>
-                                        <th>User Submissions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Olivia Rhye</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tommy Oliver</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Harry Styles</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <thead>
+                                <tr>
+                                    <th>User Submissions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Olivia Rhye</td>
+                                </tr>
+                                <tr>
+                                    <td>Tommy Oliver</td>
+                                </tr>
+                                <tr>
+                                    <td>Harry Styles</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 )}
             </div>

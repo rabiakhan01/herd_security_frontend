@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 
+export const AnalyzerContext = createContext();
 const PopupForm = ({ closePopup, setShowPopup, setEmailAnalysis, emailAnalysis, setAnalysisLoading }) => {
+
     const endPoint = {
         getEmail: 'https://mailapi.testerp.co/fetch_emails',
         analyze: 'https://mailapi.testerp.co/analyze_email'
     }
-    const [emailDetails, setEmailDetails] = useState();
     const [isLoading, setIsLoading] = useState(false)
-    const [formData, setFormData] = useState({
-        email: '',
-        password: ''
-    });
+    const { formData, setFormData, emailDetails, setEmailDetails } = useContext(AnalyzerContext);
     const [isEmpty, setIsEmpty] = useState({
         email: '',
         password: ''
@@ -93,36 +91,35 @@ const PopupForm = ({ closePopup, setShowPopup, setEmailAnalysis, emailAnalysis, 
             email_address: formData.email,
             password: formData.password
         }
-        try {
-            setIsLoading(true);
-            axios.post(endPoint.getEmail, payload).then((response) => {
-                if (response) {
-                    const data = response?.data?.map((item, index) => {
-                        return (
-                            {
-                                id: index + 1,
-                                email: item.sender.split(/[<,>]+/).join(''),
-                                checked: false,
-                                subject: item.subject,
-                                body: item.body,
-                            }
-                        )
-                    });
-                    if (data?.length > 0) {
-                        setIsLoading(false)
-
-                        setEmailDetails(data);
-                    }
-                    else {
-                        setIsLoading(false)
-                        setIsError(true)
-                    }
+        setIsLoading(true);
+        axios.post(endPoint.getEmail, payload).then((response) => {
+            if (response) {
+                const data = response?.data?.map((item, index) => {
+                    return (
+                        {
+                            id: index + 1,
+                            email: item.sender.split(/[<,>]+/).join(''),
+                            checked: false,
+                            subject: item.subject,
+                            body: item.body,
+                        }
+                    )
+                });
+                if (data?.length > 0) {
+                    setIsLoading(false)
+                    setEmailDetails(data);
                 }
-            })
-        } catch (error) {
+                else {
+                    setIsLoading(false)
+                    setEmailDetails([])
+                    setIsError(true)
+                }
+            }
+        }).catch((error) => {
             setIsLoading(false)
             console.log("🚀 ~ getEmail ~ error:", error)
-        }
+        })
+
     }
 
     // handel the get email onclick
@@ -177,7 +174,7 @@ const PopupForm = ({ closePopup, setShowPopup, setEmailAnalysis, emailAnalysis, 
                 if (response) {
                     setAnalysisLoading(false)
                     setIsLoading(false)
-                    setEmailAnalysis([...emailAnalysis, { ...response?.data }])
+                    setEmailAnalysis([{ ...response?.data }])
                 }
             })
         } catch (error) {
@@ -337,13 +334,19 @@ const DetailModal = ({ closePopup, assistant_response }) => {
 };
 
 const AnalyzerContent = () => {
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
+    const [emailDetails, setEmailDetails] = useState();
+    const value = { formData, setFormData, emailDetails, setEmailDetails }
     const [showPopup, setShowPopup] = useState(false);
     const [showDetailModal, setShowDetailModal] = useState(false);
     const [emailAnalysis, setEmailAnalysis] = useState([]);
     const [analysisLoading, setAnalysisLoading] = useState(false);
-    const handleEmailClick = (email) => {
+
+    const handleEmailClick = () => {
         setShowPopup(true);
-        // document.getElementsByClassName()
     };
 
     const togglePopup = () => {
@@ -353,45 +356,47 @@ const AnalyzerContent = () => {
     };
 
     return (
-        <div className='analyzer'>
-            <div className='analyzer-header' style={{ flexWrap: 'wrap' }}>
-                <h1>Email Security Analyzer and Assistant</h1>
-                <button onClick={() => handleEmailClick('analyst@email.com')}>Add Analyzer</button>
-            </div>
-            <div id="recentEmails1">
-                {
-                    emailAnalysis?.length ?
-                        <div className="emailContainer">
-                            <div className="makeRow">
-                                <h4>Confidence:</h4>
-                                <p>{emailAnalysis[0]?.analysis_result?.confidence}</p>
-                            </div>
-                            <div className="makeRow">
-                                <h4>Threat:</h4>
-                                <p>{emailAnalysis[0]?.analysis_result?.is_threat ? "Threat is found" : "No threat is found"}</p>
-                            </div>
-                            <div className="makeRow">
-                                <h5>Reason: </h5>
-                                <p>{emailAnalysis[0]?.analysis_result?.reason}</p>
-                            </div>
-                            <div className="makeRow">
-                                <h5>Response: </h5>
-                                <p>{emailAnalysis[0]?.assistant_response}</p>
-                            </div>
-                        </div>
-                        :
-                        analysisLoading
-                            ?
-                            <div className='main-loading'>
-                                <span class="loader"></span>
+        <AnalyzerContext.Provider value={value}>
+            <div className='analyzer'>
+                <div className='analyzer-header' style={{ flexWrap: 'wrap' }}>
+                    <h1>Email Security Analyzer and Assistant</h1>
+                    <button onClick={() => handleEmailClick('analyst@email.com')}>Add Analyzer</button>
+                </div>
+                <div id="analysis-result">
+                    {
+                        emailAnalysis?.length ?
+                            <div className="emailContainer">
+                                <div className="makeRow">
+                                    <h4>Confidence:</h4>
+                                    <p>{emailAnalysis[0]?.analysis_result?.confidence}</p>
+                                </div>
+                                <div className="makeRow">
+                                    <h4>Threat:</h4>
+                                    <p>{emailAnalysis[0]?.analysis_result?.is_threat ? "Threat is found" : "No threat is found"}</p>
+                                </div>
+                                <div className="makeRow">
+                                    <h5>Reason: </h5>
+                                    <p>{emailAnalysis[0]?.analysis_result?.reason}</p>
+                                </div>
+                                <div className="makeRow">
+                                    <h5>Response: </h5>
+                                    <p>{emailAnalysis[0]?.assistant_response ? emailAnalysis[0]?.assistant_response : 'No Response Found'}</p>
+                                </div>
                             </div>
                             :
-                            ''
-                }
+                            analysisLoading
+                                ?
+                                <div className='main-loading'>
+                                    <span class="loader"></span>
+                                </div>
+                                :
+                                ''
+                    }
+                </div>
+                {showDetailModal && <DetailModal closePopup={togglePopup} assistant_response={emailAnalysis[0]?.assistant_response} />}
+                {showPopup && <PopupForm closePopup={togglePopup} setShowPopup={setShowPopup} setEmailAnalysis={setEmailAnalysis} emailAnalysis={emailAnalysis} setAnalysisLoading={setAnalysisLoading} />}
             </div>
-            {showDetailModal && <DetailModal closePopup={togglePopup} assistant_response={emailAnalysis[0]?.assistant_response} />}
-            {showPopup && <PopupForm closePopup={togglePopup} setShowPopup={setShowPopup} setEmailAnalysis={setEmailAnalysis} emailAnalysis={emailAnalysis} setAnalysisLoading={setAnalysisLoading} />}
-        </div>
+        </AnalyzerContext.Provider>
     );
 };
 

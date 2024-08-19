@@ -17,13 +17,13 @@ const PopupForm = ({ closePopup }) => (
             <form>
                 <label htmlFor="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter user's name" required />
-                
+
                 <label htmlFor="useremail">Email</label>
                 <input type="email" id="useremail" name="email" placeholder="Enter user's email" required />
 
                 <label htmlFor="team">Team</label>
                 <select id="team" name="team">
-                <option value="" disabled selected>Select user's team</option>
+                    <option value="" disabled selected>Select user's team</option>
                     <option value="Engineering">Engineering</option>
                     <option value="Security">Security</option>
                     <option value="Sales">Sales</option>
@@ -92,7 +92,9 @@ const UserEngagementContent = () => {
                         team: 'Engineering',
                         engagementScore: 50,
                         totalVotes: 100
-                    })}>
+                    })}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <td>Name 1 & profile picture</td>
                         <td>Engineering</td>
                         <td>
@@ -111,7 +113,9 @@ const UserEngagementContent = () => {
                         team: 'Production',
                         engagementScore: 100,
                         totalVotes: 56
-                    })}>
+                    })}
+                        style={{ cursor: 'pointer' }}
+                    >
                         <td>Name 2 and Profile Picture</td>
                         <td>Production</td>
                         <td className="bartd">
@@ -152,8 +156,8 @@ const UserEngagementContent = () => {
                                 </div>
                                 {sidebarActive && expandActive && (
                                     <div id="rate">
-                                       <p>Engagement Rate:</p>
-                                       <h4 className="biggerFont">300 Submissions</h4>
+                                        <p>Engagement Rate:</p>
+                                        <h4 className="biggerFont">300 Submissions</h4>
                                     </div>
                                 )}
                                 <div id="level">
