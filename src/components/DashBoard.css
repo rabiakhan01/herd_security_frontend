@@ -1056,7 +1056,11 @@ label {
     justify-content: center;
     justify-content: space-between;
 }
-.analyzer-header > button {
+.header-btn {
+    display: flex;
+    gap: 8px;
+}
+#add-analyzer-btn {
      background-color: #016b38;
     color: white;
     border: none;
@@ -1066,6 +1070,22 @@ label {
     margin-top: 10px;
     font-size: 14px;
     font-weight: 600;
+    cursor: pointer;
+}
+#create-app-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    text-decoration: none;
+    color: #016b38;
+    border: none;
+    border-radius: 5px;
+    border: 2px solid #016b38;
+    padding: 11.5px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 700;
     cursor: pointer;
 }
 .popup-heading {

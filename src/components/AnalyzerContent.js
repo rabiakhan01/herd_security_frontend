@@ -357,10 +357,15 @@ const AnalyzerContent = () => {
 
     return (
         <AnalyzerContext.Provider value={value}>
+            <div className='flex flex-col h-20 w-20 bg-lime-400'></div>
             <div className='analyzer'>
                 <div className='analyzer-header' style={{ flexWrap: 'wrap' }}>
                     <h1>Email Security Analyzer and Assistant</h1>
-                    <button onClick={() => handleEmailClick('analyst@email.com')}>Add Analyzer</button>
+                    <div className='header-btn'>
+                        <a id='create-app-btn' target='_blank' href='https://myaccount.google.com/apppasswords?pli=1&rapt=AEjHL4PxfYKdZv4d9HZYSc8lJPTlCQQRLb[…]Dx51YhA4qrSqJ4od63FSbG6ZXAUmItopBlK9J-e4jSMi9wfwcYFh4PDH4c'>Create App Password</a>
+                        <button id="add-analyzer-btn" onClick={() => handleEmailClick()}>Add Analyzer</button>
+                    </div>
+
                 </div>
                 <div id="analysis-result">
                     {
