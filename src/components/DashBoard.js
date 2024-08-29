@@ -3,11 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import './DashBoard.css';
 import 'font-awesome/css/font-awesome.min.css';
 import logo from './imgs/logo.png';
-import integrations from "./assets/Integrations.svg";
-import userEngagement from "./assets/userEngagement.svg";
-import survey from "./assets/survey.svg";
 import logoutlogo from "./assets/logout.svg";
-import analyzer from "./assets/emailAnalyzer.svg"
 
 import HomeContent from './HomeContent';
 import FindingsContent from './FindingContent';
@@ -15,6 +11,7 @@ import IntegrationsContent from './IntegrationContent';
 import UserEngagementContent from './UserEngagementContent';
 import SurveysContent from './SurveyContent';
 import AnalyzerContent from './AnalyzerContent';
+import VoiceAnalyzer from './VoiceAnalyzer';
 
 
 const App = () => (
@@ -49,6 +46,8 @@ const DashBoard = () => {
                 return <SurveysContent />;
             case 'analyzer':
                 return <AnalyzerContent />;
+            case 'voiceAnalyzer':
+                return <VoiceAnalyzer />;
             default:
                 return <HomeContent />;
         }
@@ -113,6 +112,15 @@ const DashBoard = () => {
                                 <path d="M16 4C16.93 4 17.395 4 17.7765 4.10222C18.8117 4.37962 19.6204 5.18827 19.8978 6.22354C20 6.60504 20 7.07003 20 8V17.2C20 18.8802 20 19.7202 19.673 20.362C19.3854 20.9265 18.9265 21.3854 18.362 21.673C17.7202 22 16.8802 22 15.2 22H8.8C7.11984 22 6.27976 22 5.63803 21.673C5.07354 21.3854 4.6146 20.9265 4.32698 20.362C4 19.7202 4 18.8802 4 17.2V8C4 7.07003 4 6.60504 4.10222 6.22354C4.37962 5.18827 5.18827 4.37962 6.22354 4.10222C6.60504 4 7.07003 4 8 4M9 15L11 17L15.5 12.5M9.6 6H14.4C14.9601 6 15.2401 6 15.454 5.89101C15.6422 5.79513 15.7951 5.64215 15.891 5.45399C16 5.24008 16 4.96005 16 4.4V3.6C16 3.03995 16 2.75992 15.891 2.54601C15.7951 2.35785 15.6422 2.20487 15.454 2.10899C15.2401 2 14.9601 2 14.4 2H9.6C9.03995 2 8.75992 2 8.54601 2.10899C8.35785 2.20487 8.20487 2.35785 8.10899 2.54601C8 2.75992 8 3.03995 8 3.6V4.4C8 4.96005 8 5.24008 8.10899 5.45399C8.20487 5.64215 8.35785 5.79513 8.54601 5.89101C8.75992 6 9.03995 6 9.6 6Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                             <p className="pdash">Herd Surveys</p>
+                        </button>
+                        <button
+                            className={`options ${activeOption === 'voiceAnalyzer' ? 'active' : ''}`}
+                            onClick={() => handleOptionClick('voiceAnalyzer')}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill='none' height="24" width="24" viewBox="0 0 384 512">
+                                <path fill={activeOption === 'voiceAnalyzer' ? '#016b38' : '#ffffff'} d="M96 96l0 160c0 53 43 96 96 96s96-43 96-96l-80 0c-8.8 0-16-7.2-16-16s7.2-16 16-16l80 0 0-32-80 0c-8.8 0-16-7.2-16-16s7.2-16 16-16l80 0 0-32-80 0c-8.8 0-16-7.2-16-16s7.2-16 16-16l80 0c0-53-43-96-96-96S96 43 96 96zM320 240l0 16c0 70.7-57.3 128-128 128s-128-57.3-128-128l0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40c0 89.1 66.2 162.7 152 174.4l0 33.6-48 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l72 0 72 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-48 0 0-33.6c85.8-11.7 152-85.3 152-174.4l0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 24z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                            <p className="pdash">Voice Analyzer</p>
                         </button>
                         <button
                             className={`options ${activeOption === 'analyzer' ? 'active' : ''}`}
