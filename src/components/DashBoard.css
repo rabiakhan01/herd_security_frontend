@@ -1113,7 +1113,7 @@ label {
     
 }
 
-/*information list in popup*/
+/*detail list in popup*/
 .detail{
     display: flex;
     flex-direction: column;
@@ -1205,7 +1205,59 @@ font-weight: 700;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
     }
+/* voice analyzer*/
 
+.voice-analyzer{
+
+}
+.voice-analyzer-header > p{
+font-size: 30px;
+font-weight:700;
+}
+.voice-analyzer-main{
+    display: flex;
+    flex-direction: column;
+}
+.voice-analyzer-content{
+    display: flex;
+    flex-direction: column;
+}
+.voice-analyzer-content > span{
+    font-size: 18px;
+    font-weight: 700;
+
+}
+.voice-analyzer-selection{
+    display: flex;
+    gap: 16px;
+}
+.voice-analyzer-radiobtn{
+    display: flex; 
+    align-items: center;
+}
+.voice-analyzer-radiobtn > input{
+    accent-color: #016b38;
+}
+.btn {
+    background-color: #016b38;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    align-self: center;
+    cursor: pointer;
+}
+.voice-analyzer-record > p{
+    font-size: 16px;
+    font-weight: 700;
+}
+.voice-analyzer-file > p{
+    font-size: 16px;
+    font-weight: 700;
+}
+.voice-analyzer-upload{
+    margin-top: 16px;
+}
     @keyframes rotation {
     0% {
         transform: rotate(0deg);
