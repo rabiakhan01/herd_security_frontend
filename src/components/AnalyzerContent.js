@@ -1,14 +1,11 @@
 import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 import Markdown from 'markdown-to-jsx';
+import endPoints from './constants';
 
 export const AnalyzerContext = createContext();
 const PopupForm = ({ closePopup, setShowPopup, setEmailAnalysis, emailAnalysis, setAnalysisLoading }) => {
 
-    const endPoint = {
-        getEmail: 'https://mailapi-test.testerp.co/fetch_emails',
-        analyze: 'https://mailapi-test.testerp.co/analyze_email'
-    }
     const [isLoading, setIsLoading] = useState(false)
     const { formData, setFormData, emailDetails, setEmailDetails } = useContext(AnalyzerContext);
     const [isEmpty, setIsEmpty] = useState({
@@ -95,7 +92,7 @@ const PopupForm = ({ closePopup, setShowPopup, setEmailAnalysis, emailAnalysis, 
             password: formData.password
         }
         setIsLoading(true);
-        axios.post(endPoint.getEmail, payload).then((response) => {
+        axios.post(endPoints.getEmails, payload).then((response) => {
             if (response) {
                 const data = response?.data?.map((item, index) => {
                     return (
@@ -174,7 +171,7 @@ const PopupForm = ({ closePopup, setShowPopup, setEmailAnalysis, emailAnalysis, 
         }
         // console.log("🚀 ~ fetchAnalysisDetails ~ payload:", payload)
         try {
-            axios.post(endPoint.analyze, payload).then((response) => {
+            axios.post(endPoints.analyzeEmail, payload).then((response) => {
                 if (response) {
                     setAnalysisLoading(false)
                     setIsLoading(false)
