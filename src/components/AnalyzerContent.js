@@ -1,12 +1,13 @@
 import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
+import Markdown from 'markdown-to-jsx';
 
 export const AnalyzerContext = createContext();
 const PopupForm = ({ closePopup, setShowPopup, setEmailAnalysis, emailAnalysis, setAnalysisLoading }) => {
 
     const endPoint = {
-        getEmail: 'https://mailapi.testerp.co/fetch_emails',
-        analyze: 'https://mailapi.testerp.co/analyze_email'
+        getEmail: 'https://mailapi-test.testerp.co/fetch_emails',
+        analyze: 'https://mailapi-test.testerp.co/analyze_email'
     }
     const [isLoading, setIsLoading] = useState(false)
     const { formData, setFormData, emailDetails, setEmailDetails } = useContext(AnalyzerContext);
@@ -15,6 +16,8 @@ const PopupForm = ({ closePopup, setShowPopup, setEmailAnalysis, emailAnalysis, 
         password: ''
     })
     const [question, setQuestion] = useState('');
+    const [assistantMode, setAssistantMode] = useState('Friendly(Beginner)')
+    console.log("🚀 ~ PopupForm ~ assistantMode:", assistantMode)
     const [isDisable, setIsDisable] = useState(true);
     const [isError, setIsError] = useState(false);
     const [inputDisable, setInputDisable] = useState(true);
@@ -167,6 +170,7 @@ const PopupForm = ({ closePopup, setShowPopup, setEmailAnalysis, emailAnalysis, 
             email_content: emailDetail.email_content,
             email_address: emailDetail.email_address,
             query: question,
+            mode: assistantMode
         }
         // console.log("🚀 ~ fetchAnalysisDetails ~ payload:", payload)
         try {
@@ -185,10 +189,16 @@ const PopupForm = ({ closePopup, setShowPopup, setEmailAnalysis, emailAnalysis, 
 
     //handel the onclick of analyze
     const handelEmailAnalysis = () => {
+
         setShowPopup(false);
         setAnalysisLoading(true)
         setEmailAnalysis([]);
         fetchAnalysisDetails();
+        const newDetail = emailDetails?.map((item) => {
+            return { ...item, checked: false }
+        })
+        setEmailDetails(newDetail)
+
     }
 
     return (
@@ -280,6 +290,16 @@ const PopupForm = ({ closePopup, setShowPopup, setEmailAnalysis, emailAnalysis, 
                                                 )
                                             })
                                         }
+                                    </div>
+                                    <div className="assistant-mode">
+                                        <label>Select assistant mode</label>
+                                        <select onChange={(e) => { setAssistantMode(e.target.value) }}>
+                                            <option value={"Friendly(Beginner)"}>Friendly(Beginner)</option>
+                                            <option value={"Professional(Export)"}>Professional(Export)</option>
+                                            <option value={"Intermediate(Tech-Savvy)"}>Intermediate(Tech-Savvy)</option>
+                                            <option value={"Concise(Brief)"}>Concise(Brief)</option>
+                                            <option value={"Detailed(In-Depth)"}>Detailed(InDepth)</option>
+                                        </select>
                                     </div>
                                     <div className='detail-question'>
                                         <label>Ask a question about the selected emails:</label>
@@ -385,14 +405,14 @@ const AnalyzerContent = () => {
                                 </div>
                                 <div className="makeRow">
                                     <h5>Response: </h5>
-                                    <p>{emailAnalysis[0]?.assistant_response ? emailAnalysis[0]?.assistant_response : 'No Response Found'}</p>
+                                    <Markdown>{emailAnalysis[0]?.assistant_response ? emailAnalysis[0]?.assistant_response : 'No Response Found'}</Markdown>
                                 </div>
                             </div>
                             :
                             analysisLoading
                                 ?
                                 <div className='main-loading'>
-                                    <span class="loader"></span>
+                                    <span className="loader"></span>
                                 </div>
                                 :
                                 ''
