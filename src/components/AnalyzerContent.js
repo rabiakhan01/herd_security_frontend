@@ -1,12 +1,13 @@
 import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
+import Markdown from 'markdown-to-jsx';
 
 export const AnalyzerContext = createContext();
 const PopupForm = ({ closePopup, setShowPopup, setEmailAnalysis, emailAnalysis, setAnalysisLoading }) => {
 
     const endPoint = {
-        getEmail: 'https://mailapi.testerp.co/fetch_emails',
-        analyze: 'https://mailapi.testerp.co/analyze_email'
+        getEmail: 'https://mailapi-test.testerp.co/fetch_emails',
+        analyze: 'https://mailapi-test.testerp.co/analyze_email'
     }
     const [isLoading, setIsLoading] = useState(false)
     const { formData, setFormData, emailDetails, setEmailDetails } = useContext(AnalyzerContext);
@@ -385,7 +386,7 @@ const AnalyzerContent = () => {
                                 </div>
                                 <div className="makeRow">
                                     <h5>Response: </h5>
-                                    <p>{emailAnalysis[0]?.assistant_response ? emailAnalysis[0]?.assistant_response : 'No Response Found'}</p>
+                                    <Markdown>{emailAnalysis[0]?.assistant_response ? emailAnalysis[0]?.assistant_response : 'No Response Found'}</Markdown>
                                 </div>
                             </div>
                             :
